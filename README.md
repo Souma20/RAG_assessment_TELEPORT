@@ -13,11 +13,23 @@ The project implements:
   - Strategy B: query expansion followed by vector search
 - a reproducible benchmark report in `retrieval_benchmark.md`
 
-## Run
+## Setup
+
+From the repository root:
+
+```powershell
+python -m venv venv
+newenv\Scripts\Activate
+python -m pip install -r requirements.txt
+```
+
+## Run Benchmark
 
 ```powershell
 python -m rag_assessment.benchmark
 ```
+
+This prints the Strategy A vs Strategy B comparison and writes `retrieval_benchmark.md`.
 
 ## Test
 
@@ -25,7 +37,17 @@ python -m rag_assessment.benchmark
 python -m pytest
 ```
 
-`pytest` is not vendored with this repository. Install it in your environment if needed.
+## Submission Contents
+
+The repository contains:
+
+- `rag_assessment/embedding.py`: local embedding implementations
+- `rag_assessment/vector_store.py`: NumPy vector store with cosine search
+- `rag_assessment/vertexai_mock.py`: mocked Vertex AI embedding and generative classes
+- `rag_assessment/retrieval.py`: ingestion and retrieval orchestration
+- `rag_assessment/benchmark.py`: benchmark runner
+- `tests/test_retrieval.py`: pytest coverage for retrieval and mocks
+- `retrieval_benchmark.md`: generated comparison report
 
 ## Production Migration Notes
 
